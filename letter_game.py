@@ -5,20 +5,6 @@ import sys
 file = open('letter_game_words.txt', 'r')
 words = file.read().splitlines()
 
-words = [
-    'apple',
-    'banana',
-    'orange',
-    'coconut',
-    'strawberry',
-    'lime',
-    'grapefruit',
-    'lemon',
-    'kumquat',
-    'blueberry',
-    'melon'
-]
-
 def clear():
     if os.name == 'nt':
         os.system('cls')
@@ -28,7 +14,7 @@ def clear():
 def draw(bad_guesses, good_guesses, secret_word):
     clear()
     
-    print('Strikes: {}/7'.format(len(bad_guesses)))
+    print('Strikes: {}/{}'.format(len(bad_guesses), int((len(secret_word)/2+4))))
     print('')
     
     for letter in bad_guesses:
@@ -77,7 +63,7 @@ def play(done):
                 done = True
         else:
             bad_guesses.append(guess)
-            if len(bad_guesses) == 7:
+            if len(bad_guesses) == len(secret_word)/2+4:
                 draw(bad_guesses, good_guesses, secret_word)
                 print('You lost!')
                 print('The secret word was {}.'.format(secret_word))
