@@ -3,7 +3,7 @@ import random
 import sys
 
 file = open('letter_game_words.txt', 'r')
-words = file.readlines()
+words = file.read().splitlines()
 
 words = [
     'apple',
